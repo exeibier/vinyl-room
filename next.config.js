@@ -8,6 +8,11 @@ const nextConfig = {
             port: '',
             pathname: '/img/**',
           },
+          {
+            protocol:'https',
+            hostname:'v5.airtableusercontent.com',
+            pathname:'/v1/19/19/1691460000000/**'
+          }
         ],
       },
 }
