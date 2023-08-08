@@ -1,7 +1,5 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Catalog from './home/Catalog';
 import Header from './home/Header';
-import { Vinyl } from './types/vinyl';
 
 export default function Home() {
 
