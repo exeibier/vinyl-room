@@ -4,6 +4,8 @@ Airtable.configure({
   apiKey: process.env.AIRTABLE_API_KEY,
 });
 
+export const revalidate = 3600
+
 const base = Airtable.base(process.env.AIRTABLE_BASE_ID);
 
 function getVinyls(): Promise<any> {
