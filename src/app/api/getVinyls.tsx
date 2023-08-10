@@ -3,10 +3,14 @@ Airtable.configure({
   endpointUrl: 'https://api.airtable.com',
   apiKey: process.env.AIRTABLE_API_KEY,
 });
+import { cache } from 'react'
+
+export const revalidate = 3600
+
 
 const base = Airtable.base(process.env.AIRTABLE_BASE_ID);
 
-function getVinyls(): Promise<any> {
+function getRecords(): Promise<any> {
   const totalRecords: { id: any; artist: any; album: any; price: any; img: any; tags: any; priceDiscount: any; discount: any }[] = [];
 
   return new Promise((resolve, rejected) => {
@@ -49,5 +53,10 @@ function getVinyls(): Promise<any> {
   })
 
 }
+
+const getVinyls =  cache(async () => {
+  const vinyls = await getRecords();
+  return vinyls
+})
 
 export default getVinyls;
