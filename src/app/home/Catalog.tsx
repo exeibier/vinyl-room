@@ -1,8 +1,6 @@
 import Vinyl from "../components/Vinyl/Vinyl";
 import getVinyls from '../api/getVinyls';
 
-export const revalidate = 3600
-
 export default async function Catalog() {
   const vinyls = await getVinyls();
 
