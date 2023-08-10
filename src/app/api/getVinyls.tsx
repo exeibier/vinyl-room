@@ -5,7 +5,7 @@ Airtable.configure({
 });
 import { cache } from 'react'
 
-export const revalidate = 3600
+export const revalidate = 10
 
 
 const base = Airtable.base(process.env.AIRTABLE_BASE_ID);
