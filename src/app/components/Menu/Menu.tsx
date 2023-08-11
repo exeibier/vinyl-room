@@ -2,6 +2,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { BsSearch } from 'react-icons/bs';
+
 
 export default function Menu() {
     const [isMenuOpen, setisMenuOpen] = useState(false)
@@ -23,7 +25,7 @@ export default function Menu() {
                 </div>
                 <div className={`items-center justify-between ${isMenuOpen ? '' : 'hidden'
                     } w-full md:flex md:w-auto md:order-1`} id="navbar-sticky">
-                    <ul className="flex flex-col text-center p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-transparent md:dark:bg-transparent dark:border-gray-700">
+                    <ul className="flex flex-col items-center text-center p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-transparent md:dark:bg-transparent dark:border-gray-700">
                         <li>
                             <Link href="#">
                                 <p className="block py-2 pl-3 pr-4 text-zinc-50 bg-transparent rounded md:bg-transparent md:text-zinc-50 md:p-0 md:text-zinc-50" aria-current="page">Catálogo</p>
@@ -34,7 +36,12 @@ export default function Menu() {
                                 <Image src="https://openmoji.org/data/color/svg/E043.svg" alt="Instagram" width={25} height={20} />
                             </a>
                         </li>
+                        <li className='flex items-center'>
+                            <input className='p-1 bg-transparent border-2 border-white rounded-lg text-zinc-50 placeholder-white' placeholder='Buscar...' type="search" />
+                            <BsSearch className='fill-white ms-3 hover:fill-fuchsia-800 hover:cursor-pointer'/>
+                        </li>
                     </ul>
+
                 </div>
             </div>
         </nav>
