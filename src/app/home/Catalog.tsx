@@ -2,8 +2,10 @@ import Vinyl from "../components/Vinyl/Vinyl";
 import getVinyls from '../api/getVinyls';
 
 export default async function Catalog() {
-  const vinyls = await getVinyls();
+  let totalRecords: { id: any; artist: any; album: any; price: any; img: any; tags: any; priceDiscount: any; discount: any }[] = [];
 
+  const vinyls = await getVinyls();
+console.log(vinyls)
   return (
     <section className="md:container my-16 lg:my-20">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -11,15 +13,14 @@ export default async function Catalog() {
           <Vinyl
             id={vinyl.id}
             key={i}
-            img={vinyl.img ? vinyl.img[0] : '/Mockup_3.jpg'}
-            title={vinyl.album}
-            artist={vinyl.artist}
-            price={vinyl.price}
-            tags={vinyl.tags ? vinyl.tags : []}
-            discount={vinyl.discount ? true : false}
-            priceDiscount={vinyl.priceDiscount} />
+            img={vinyl.fields.img ? vinyl.fields.img[0].url :'/Mockup_3.jpg'}
+            title={vinyl.fields.album}
+            artist={vinyl.fields.artist}
+            price={vinyl.fields.price}
+            tags={vinyl.fields.tags ? vinyl.fields.tags : []}
+            discount={vinyl.fields.discount ? true : false}
+            priceDiscount={vinyl.fields.priceDiscount} />
         ))}
-
       </div>
     </section>
   )
