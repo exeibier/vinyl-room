@@ -2,10 +2,7 @@ import Vinyl from "../components/Vinyl/Vinyl";
 import getVinyls from '../api/getVinyls';
 
 export default async function Catalog() {
-  let totalRecords: { id: any; artist: any; album: any; price: any; img: any; tags: any; priceDiscount: any; discount: any }[] = [];
-
   const vinyls = await getVinyls();
-console.log(vinyls)
   return (
     <section className="md:container my-16 lg:my-20">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
