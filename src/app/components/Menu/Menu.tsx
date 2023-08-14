@@ -12,13 +12,13 @@ export default function Menu() {
     setisMenuOpen(!isMenuOpen);
   };
 
-  const handleSearchChange = (event) => {
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
-    console.log(searchValue)
-  };
+    console.log(searchValue);
+  };  
 
-  const handleSearch = (searchInput) => {
-    console.log(searchInput)
+  const handleSearch = (searchInput: string) => {
+    alert(searchInput)
   }
 
   return (
@@ -89,7 +89,7 @@ export default function Menu() {
                 value={searchValue}
                 onChange={handleSearchChange}
               />
-              <BsSearch onClick={handleSearch(searchValue)} className="fill-white ms-3 hover:fill-fuchsia-800 hover:cursor-pointer" />
+              <BsSearch onClick={() => handleSearch(searchValue)} className="fill-white ms-3 hover:fill-fuchsia-800 hover:cursor-pointer" />
             </li>
           </ul>
         </div>
