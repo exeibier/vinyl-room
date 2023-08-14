@@ -7,19 +7,28 @@ import { BsSearch } from "react-icons/bs";
 export default function Menu() {
   const [isMenuOpen, setisMenuOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [borderStyle, setBorderStyle] = useState("border-white");
 
   const handleClick = () => {
     setisMenuOpen(!isMenuOpen);
   };
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const searchInputElement = document.querySelector("input.border-rose-500");
+    if (searchInputElement) {
+      setBorderStyle("border-white");
+    }
     setSearchValue(event.target.value);
     console.log(searchValue);
-  };  
+  };
 
   const handleSearch = (searchInput: string) => {
-    alert(searchInput)
-  }
+    const searchInputElement = document.querySelector("input.border-white");
+    if (searchInput.length === 0) {
+      setBorderStyle("border-rose-500");
+      alert("Ingresa un artista/disco")
+    }
+  };
 
   return (
     <nav className="bg-white dark:bg-neutral-950  fixed w-full z-20 top-0 left-0 border-b dark:border-gray-400">
@@ -83,13 +92,16 @@ export default function Menu() {
             </li>
             <li className="flex items-center justify-center w-full">
               <input
-                className="max-w-xs w-10/12 p-1 bg-transparent border-2 border-white rounded-lg text-zinc-50 placeholder-white"
+                className={`max-w-xs w-10/12 p-1 bg-transparent border-2 ${borderStyle} rounded-lg text-zinc-50 placeholder-white`}
                 placeholder="Buscar..."
                 type="search"
                 value={searchValue}
                 onChange={handleSearchChange}
               />
-              <BsSearch onClick={() => handleSearch(searchValue)} className="fill-white ms-3 hover:fill-fuchsia-800 hover:cursor-pointer" />
+              <BsSearch
+                onClick={() => handleSearch(searchValue)}
+                className="fill-white ms-3 hover:fill-fuchsia-800 hover:cursor-pointer"
+              />
             </li>
           </ul>
         </div>
